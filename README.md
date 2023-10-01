@@ -25,16 +25,33 @@ etc
 
 Per prima bisogna controllare che la stringa che ci viene passata assomigli a un numero di telefono italiano. 
 ###
-    private static bool NumeroItaliano(string valore)
-        {
-            if(valore.Length== 13 && ( valore.StartsWith("+39") || valore.StartsWith("0039")))
-            return true;
-            if(valore.Length== 14 && valore.StartsWith("0039"))
-            return true;
-            if(valore.Length== 10 && valore.StartsWith("3"))
-            return true;
-            return false;
-        }
+    private static bool Numerovero(string valore)
+    {
+        if(valore.Length == 13 && ( valore.StartsWith("+39") || valore.StartsWith("0039")))
+        return true;
+        if(valore.Length == 14 && valore.StartsWith("0039"))
+        return true;
+        if(valore.Length == 10 && valore.StartsWith("3"))
+        return true;
+        return false;
+    }
 ###
-Usiamo un metodo booleano che controlla che la lunghezza della stringa sia giusta e che i suoi primi caratteri siano giusti; se sono giusti ritorna true. 
+Usiamo una funzione booleana che controlla che la lunghezza della stringa sia giusta e che i suoi primi caratteri siano giusti; se sono giusti ritorna true.
+
+
+
+A questo punto si andrà a controllare ogni stringa che viene passata richiamando la funzione Numerovero e se il risultato della funzione è true 
+viene ritornata la stringa altrimenti si  ritorna "".
+###
+     public static string Check(string[] input)
+    {
+       foreach(var valore in input)
+       {
+        if(Numerovero(valore))
+        return valore;
+       }
+       return"";
+    }
+###
+
 
