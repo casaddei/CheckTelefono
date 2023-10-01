@@ -21,3 +21,20 @@ Se arriva "3", "05417723",  "00391231231230"
 Tornare ""
 
 etc
+
+
+Per prima bisogna controllare che la stringa che ci viene passata assomigli a un numero di telefono italiano. 
+###
+private static bool NumeroItaliano(string valore)
+    {
+        if(valore.Length== 13 && ( valore.StartsWith("+39") || valore.StartsWith("0039")))
+        return true;
+        if(valore.Length== 14 && valore.StartsWith("0039"))
+        return true;
+        if(valore.Length== 10 && valore.StartsWith("3"))
+        return true;
+        return false;
+    }
+###
+Usiamo un metodo booleano che controlla che la lunghezza della stringa sia giusta e che i suoi primi caratteri siano giusti; se sono giusti ritorna true. 
+
