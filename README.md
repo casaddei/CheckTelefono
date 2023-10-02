@@ -1,57 +1,34 @@
 # Check Telefono
 
-Ricevuto come parametro un vettore di string, ritornare al chiamante la prima stringa che assomiglia molto ad un numero di telefono cellulare italiano ovvero:
-- che inizia con +39 (esattamente lungo  13)
-- oppure con 0039 (esattamente lungo 14)
-- oppure con un 3 (esattamente lungo 10)
-
-Se il numero non viene trovato, ritornare stringa vuota ""
-
-Ad esempio.
-Se arriva "05417373", "3367726712",  "778823"
-Tornare "3367726712"
-
-Se arriva "33677267", "33677232",  "778823"
-Tornare ""
-
-Se arriva "", "05417723",  "+391231231234"
-Tornare "+391231231234"
-
-Se arriva "3", "05417723",  "00391231231230"
-Tornare ""
-
-etc
-
-
-Per prima bisogna controllare che la stringa che ci viene passata assomigli a un numero di telefono italiano. 
-###
-    private static bool Numerovero(string valore)
-    {
-        if(valore.Length == 13 && ( valore.StartsWith("+39") || valore.StartsWith("0039")))
-        return true;
-        if(valore.Length == 14 && valore.StartsWith("0039"))
-        return true;
-        if(valore.Length == 10 && valore.StartsWith("3"))
-        return true;
-        return false;
-    }
-###
-Usiamo una funzione booleana che controlla che la lunghezza della stringa sia giusta e che i suoi primi caratteri siano giusti; se sono giusti ritorna true.
-
-
-
-A questo punto si andrà a controllare ogni stringa che viene passata richiamando la funzione Numerovero e se il risultato della funzione è true 
-viene ritornata la stringa altrimenti si  ritorna "".
 ###
      public static string Check(string[] input)
     {
-       foreach(var valore in input)
+       foreach(var valore in input)   // ciclo foreach che scorre il vettore passato in input cotrollando tutte le sue variabili 
        {
-        if(Numerovero(valore))
-        return valore;
+        if(Numerovero(valore))       // qui si va a richiamare il metodo Numerovero che abbiamo definito sotto 
+        return valore;               // se la condizione è soddisfatta si ritorna il valore (cioè l'elemento del vettore)
        }
-       return"";
+       return"";                    // nel caso in cui la condizione non è soddisfatta ritorna "" 
     }
 ###
 
 
+Per prima cosa bisogna controllare che la stringa che ci viene passata assomigli a un numero di telefono italiano. 
+Per farlo usiamo il metodo Numerovero che abbiamo definito nel pezzo di codice sotto. 
+L'if ritorna valore nel caso in cui si verifica la condizione; in caso contrario "".
+
+
+###
+    private static bool Numerovero(string valore)
+    {
+        if(valore.Length == 13 && ( valore.StartsWith("+39") || valore.StartsWith("0039")))    // se la stringa valore è lunga 13 ed inzia per 0039 o +39 il metodo ritorna true
+        return true;
+        if(valore.Length == 14 && valore.StartsWith("0039"))  // se la stringa valore è lunga 14 ed inzia per 0039 ritorna true
+        return true;
+        if(valore.Length == 10 && valore.StartsWith("3"))  // se la stinga valore è lunga 10 ed inizia per 3 ritorna true 
+        return true;
+        return false; // nel caso in cui nessuna delle condizioni sopra si verifichi il metodo ritorna false
+    }
+###
+In questo pezzo di codice abbiamo definito un metodo booleano privato chiamato Numerovero che si occupa di controllare la stringa che gli viene passata in input.
+In particolare controlla se si verificano alcune condizioni e in quel caso ritorna true, in caso contrario false.
