@@ -15,8 +15,6 @@
 
 Per prima cosa bisogna controllare che la stringa che ci viene passata assomigli a un numero di telefono italiano. 
 Per farlo usiamo il metodo Numerovero che abbiamo definito nel pezzo di codice sotto. 
-L'if ritorna valore nel caso in cui si verifica la condizione; in caso contrario "".
-
 
 ###
     private static bool Numerovero(string valore)
